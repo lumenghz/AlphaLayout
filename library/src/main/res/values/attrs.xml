@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <declare-styleable name="AlphaLayout">
+        <attr name="headerLayout" format="reference" />
+        <attr name="headerTransparent" format="boolean" />
+        <attr name="transparent_distance" format="dimension|reference" />
+    </declare-styleable>
+
+    <declare-styleable name="AlphaHeaderLayout">
+        <attr name="considerPadding" format="boolean" />
+    </declare-styleable>
+</resources>

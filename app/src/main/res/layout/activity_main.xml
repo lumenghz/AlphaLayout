@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8"?>
+<com.alhpalayout.AlphaLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/alpha_layout"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    app:headerLayout="@layout/layout_header"
+    app:headerTransparent="true"
+    app:transparent_distance="150dp"
+    tools:context="com.alphalayout.MainActivity">
+
+    <ListView
+        android:id="@+id/list_view"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:divider="@null"
+        android:dividerHeight="0dp" />
+
+</com.alhpalayout.AlphaLayout>

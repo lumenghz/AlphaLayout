@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8"?>
+<com.alhpalayout.widgets.AlphaHeaderLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:background="@color/from"
+    android:minHeight="70dp">
+
+    <TextView
+        android:id="@+id/title_header"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerInParent="true"
+        android:text="Jake Ruman"
+        android:fontFamily="sans-serif-light"
+        android:textColor="@android:color/white"
+        android:textSize="16sp"
+        android:background="@drawable/header_title_background"/>
+
+</com.alhpalayout.widgets.AlphaHeaderLayout>
