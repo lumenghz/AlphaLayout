@@ -7,10 +7,70 @@
 ### Preview
 
 #### 1. sample_ListView
-![sample_list](./art/sample_list.gif)
+<img src=./art/sample_list.gif width=300/>
 
 #### 2. sample_RecyclerView
-![sample_recycler](./art/sample_recycler.gif)
+<img src=./art/sample_recycler.gif width=300/>
 
 #### 3. sample_ScrollView
-![sample_recycler](./art/sample_scroll.gif)
+<img src=./art/sample_scroll.gif width=300/>
+
+### Usage
+- Add `AlphaLayout` widget in your layout
+
+```xml
+<com.alhpalayout.AlphaLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/alpha_layout"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    app:headerLayout="@layout/layout_header"
+    app:transparent_distance="150dp"
+    tools:context="com.alphalayout.activity.ListSampleActivity">
+
+    <ListView
+        android:id="@+id/list_view"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:divider="@null"
+        android:dividerHeight="0dp" />
+
+</com.alhpalayout.AlphaLayout>
+```
+
+- implements AlphaLayout.OnRefreshListener in your `Activity`
+
+```java
+    @Override
+    public void onRefresh() {
+        alphaLayout.postDelayed(new Runnable() {
+            @Override
+            public void run() {
+                alphaLayout.setRefreshing(false);
+            }
+        }, REFRESH_DELAY);
+    }
+
+    @Override
+    public void onScroll(int direction, float percent) {
+        if (direction == AlphaLayout.DIRECTION_DOWN) {
+            ViewCompat.setAlpha(alphaLayout.getHeaderLayout(), 1.0f - percent);
+        } else {
+            alphaLayout.getHeaderLayout().getBackground().setAlpha((int) (255 * percent));
+            mTitleView.getBackground().mutate().setAlpha((int) (255 * (1 - percent)));
+        }
+    }
+```
+
+### Attention
+- You should use `AlphaScrollView` which been provided instead of `ScrollView`.
+- I also provided `AlphaHeaderLayout` which can make good performance easily.
+
+**See sample project for detail**
+
+### Download Sample apk
+#### 1. Fir.im
+<img src=./art/fir_1.0.0_release.jpeg width=300 />
+#### 2.download apk directly
+[release_1.0.0_github.apk](./art/alpha_release-1/0/0-github.apk)
