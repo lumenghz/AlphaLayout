@@ -4,27 +4,76 @@ apply plugin: 'android-apt'
 android {
     compileSdkVersion 24
     buildToolsVersion "24.0.2"
+
     defaultConfig {
         applicationId "com.alphalayout"
         minSdkVersion 9
         targetSdkVersion 24
-        versionCode 1
-        versionName "1.0"
-        testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
+        versionCode 10000
+        versionName "1.0.0"
     }
+
+    if (project.hasProperty('STOREFILE')) {
+        signingConfigs {
+            release {
+                storeFile file(STOREFILE)
+                storePassword STOREPASS
+                keyAlias KEYALIAS
+                keyPassword KEYPASS
+            }
+        }
+    }
+
     buildTypes {
+        debug {
+            applicationIdSuffix ".debug"
+            manifestPlaceholders = [APP_NAME: '@string/app_name_debug']
+        }
+
         release {
             minifyEnabled false
+            manifestPlaceholders = [APP_NAME: '@string/app_name']
             proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
+        }
+    }
+
+    productFlavors {
+        github {
+            manifestPlaceholders = [UMENG_CHANNEL: 'GitHub']
+        }
+
+        fir {
+            manifestPlaceholders = [UMENG_CHANNEL: 'Fir']
+        }
+    }
+
+    applicationVariants.all { variant ->
+        variant.outputs.each { output ->
+            if (output.outputFile != null && output.outputFile.name.endsWith(".apk")) {
+                output.outputFile = file("${output.outputFile.parent}/alpha"
+                        + "-${variant.buildType.name.toLowerCase()}"
+                        + "-${variant.versionName}"
+                        + "-${variant.flavorName.toLowerCase()}"
+                        + ".apk")
+            }
         }
     }
 }
 
 dependencies {
     compile fileTree(include: ['*.jar'], dir: 'libs')
+    // Android
     compile 'com.android.support:appcompat-v7:24.2.1'
+    compile 'com.android.support:cardview-v7:24.2.1'
     // Butterknife
     compile 'com.jakewharton:butterknife:8.1.0'
     apt 'com.jakewharton:butterknife-compiler:8.1.0'
     compile project(':library')
+    compile 'com.android.support:design:24.2.1'
+    // Slider
+    compile 'com.squareup.picasso:picasso:2.4.0'
+    compile 'com.nineoldandroids:library:2.4.0'
+    compile 'com.daimajia.slider:library:1.1.5@aar'
+    // UMENG
+    compile 'com.umeng.analytics:analytics:latest.integration'
 }

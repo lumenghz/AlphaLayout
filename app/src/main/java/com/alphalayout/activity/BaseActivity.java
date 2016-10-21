@@ -11,6 +11,8 @@ import android.view.Window;
 import android.view.WindowManager;
 
 import com.alphalayout.R;
+import com.alphalayout.utils.Constants;
+import com.umeng.analytics.MobclickAgent;
 
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -21,18 +23,15 @@ import butterknife.ButterKnife;
 import butterknife.Unbinder;
 
 /**
- * @author glority - lu.meng
+ * @author lu.meng
  */
-
 abstract class BaseActivity extends AppCompatActivity {
 
     public static final int REFRESH_DELAY = 2000;
 
-    protected static final String ICON = "icon";
-    protected static final String COLOR = "color";
-    protected static final String TITLE = "title";
-
     protected List<Map<String, Object>> mSampleDatas;
+
+    protected List<Integer> mPagerDatas;
 
     protected Unbinder mUnbinder;
 
@@ -46,6 +45,18 @@ abstract class BaseActivity extends AppCompatActivity {
             transparentStatusBar();
 
         initDataSet();
+    }
+
+    @Override
+    protected void onResume() {
+        super.onResume();
+        MobclickAgent.onResume(this);
+    }
+
+    @Override
+    protected void onPause() {
+        super.onPause();
+        MobclickAgent.onPause(this);
     }
 
     @Override
@@ -84,11 +95,16 @@ abstract class BaseActivity extends AppCompatActivity {
 
         for (int i = 0; i < icons.length; i++) {
             mMap = new HashMap<>();
-            mMap.put(ICON, icons[i]);
-            mMap.put(COLOR, colors[i]);
-            mMap.put(TITLE, titles[i]);
+            mMap.put(Constants.ICON, icons[i]);
+            mMap.put(Constants.COLOR, colors[i]);
+            mMap.put(Constants.TITLE, titles[i]);
             mSampleDatas.add(mMap);
         }
+
+        mPagerDatas = new ArrayList<>();
+        mPagerDatas.add(R.drawable.material_1);
+        mPagerDatas.add(R.drawable.material_2);
+        mPagerDatas.add(R.drawable.material_3);
     }
 
     /**

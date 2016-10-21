@@ -22,9 +22,13 @@ import butterknife.ButterKnife;
  * @author lu.meng
  */
 public class ListAdapter extends ArrayAdapter<Map<String, Object>> {
+    private static final int TYPE_VIEWPAGER = 0;
+    private static final int TYPE_NORMAL = 1;
 
     private final LayoutInflater mInflater;
     private final List<Map<String, Object>> mDatas;
+
+    private View viewPager;
 
     public ListAdapter(Context context, int resource, List<Map<String, Object>> mDatas) {
         super(context, resource, mDatas);
@@ -33,7 +37,27 @@ public class ListAdapter extends ArrayAdapter<Map<String, Object>> {
     }
 
     @Override
-    public View getView(final int position, View convertView, @NonNull ViewGroup parent) {
+    public int getItemViewType(int position) {
+        if (position == 0)
+            return TYPE_VIEWPAGER;
+        else
+            return TYPE_NORMAL;
+    }
+
+    @Override
+    public int getViewTypeCount() {
+        return 2;
+    }
+
+    @Override
+    public View getView(int position, View convertView, @NonNull ViewGroup parent) {
+        if (position == 0)
+            return handleSpecialView(convertView);
+        else
+            return handleNormalView(position, convertView, parent);
+    }
+
+    private View handleNormalView(final int position, View convertView, @NonNull ViewGroup parent) {
         final ListAdapter.ViewHolder viewHolder;
         if (convertView == null) {
             convertView = mInflater.inflate(R.layout.list_item, parent, false);
@@ -50,6 +74,18 @@ public class ListAdapter extends ArrayAdapter<Map<String, Object>> {
         viewHolder.title.setText((String) model.get(Constants.TITLE));
 
         return convertView;
+    }
+
+    private View handleSpecialView(View convertView) {
+        if (null == convertView)
+            convertView = viewPager;
+
+        return convertView;
+    }
+
+    public void setViewPager(View viewPager) {
+        if (null == viewPager) return;
+        this.viewPager = viewPager;
     }
 
     class ViewHolder {

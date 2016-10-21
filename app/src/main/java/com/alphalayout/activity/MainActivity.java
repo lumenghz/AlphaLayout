@@ -1,44 +1,35 @@
 package com.alphalayout.activity;
 
-import android.content.Context;
+import android.content.Intent;
 import android.os.Bundle;
-import android.support.annotation.NonNull;
-import android.support.v4.view.ViewCompat;
-import android.view.LayoutInflater;
+import android.support.v7.widget.Toolbar;
+import android.view.Menu;
+import android.view.MenuItem;
 import android.view.View;
-import android.view.ViewGroup;
-import android.widget.ArrayAdapter;
-import android.widget.ImageView;
-import android.widget.ListView;
-import android.widget.TextView;
 
-import com.alhpalayout.AlphaLayout;
 import com.alphalayout.R;
 
-import java.util.List;
-import java.util.Map;
-
 import butterknife.BindView;
+import butterknife.OnClick;
 
 /**
  * @author lu.meng
  */
-public class MainActivity extends BaseActivity implements AlphaLayout.OnRefreshListener {
+public class MainActivity extends BaseActivity {
 
-    @BindView(R.id.alpha_layout)
-    protected AlphaLayout alphaLayout;
-
-    @BindView(R.id.title_header)
-    TextView mTitleView;
+    @BindView(R.id.toolbar)
+    Toolbar toolbar;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
 
-        ListView listView = (ListView) findViewById(R.id.list_view);
-        listView.setAdapter(new SimpleAdapter(this, R.layout.list_item, mSampleDatas));
+        setSupportActionBar(toolbar);
+    }
 
-        alphaLayout.setOnRefreshListener(this);
+    @Override
+    protected boolean isTransparentStatusBar() {
+        return false;
     }
 
     @Override
@@ -47,64 +38,34 @@ public class MainActivity extends BaseActivity implements AlphaLayout.OnRefreshL
     }
 
     @Override
-    protected boolean isTransparentStatusBar() {
+    public boolean onCreateOptionsMenu(Menu menu) {
+        getMenuInflater().inflate(R.menu.menu_main, menu);
         return true;
     }
 
     @Override
-    public void onRefresh() {
-        alphaLayout.postDelayed(new Runnable() {
-            @Override
-            public void run() {
-                alphaLayout.setRefreshing(false);
-            }
-        }, REFRESH_DELAY);
+    public boolean onOptionsItemSelected(MenuItem item) {
+        if (item.getItemId() == R.id.menu_information) {
+            startActivity(new Intent(this, InformationActivity.class));
+            return true;
+        }
+        return super.onOptionsItemSelected(item);
     }
 
-    @Override
-    public void onScroll(int direction, float percent) {
-        if (direction == AlphaLayout.DIRECTION_DOWN) {
-            ViewCompat.setAlpha(alphaLayout.getHeaderLayout(), 1.0f - percent);
-        } else {
-            alphaLayout.getHeaderLayout().getBackground().setAlpha((int) (255 * percent));
-            mTitleView.getBackground().mutate().setAlpha((int) (255 * (1 - percent)));
-        }
-    }
-
-    class SimpleAdapter extends ArrayAdapter<Map<String, Object>> {
-
-        private final LayoutInflater mInflater;
-        private final List<Map<String, Object>> mDatas;
-
-        public SimpleAdapter(Context context, int resource, List<Map<String, Object>> mDatas) {
-            super(context, resource, mDatas);
-            this.mDatas = mDatas;
-            mInflater = LayoutInflater.from(context);
-        }
-
-        @Override
-        public View getView(final int position, View convertView, @NonNull ViewGroup parent) {
-            final ViewHolder viewHolder;
-            if (convertView == null) {
-                viewHolder = new ViewHolder();
-                convertView = mInflater.inflate(R.layout.list_item, parent, false);
-                viewHolder.icon = (ImageView) convertView.findViewById(R.id.image_view_icon);
-                viewHolder.title = (TextView) convertView.findViewById(R.id.title_item);
-                convertView.setTag(viewHolder);
-            } else {
-                viewHolder = (ViewHolder) convertView.getTag();
-            }
-
-            viewHolder.icon.setImageResource((int) mDatas.get(position).get(ICON));
-            convertView.setBackgroundResource((int) mDatas.get(position).get(COLOR));
-            viewHolder.title.setText((String) mDatas.get(position).get(TITLE));
-
-            return convertView;
-        }
-
-        class ViewHolder {
-            ImageView icon;
-            TextView title;
+    @OnClick({R.id.card_list, R.id.card_recycler, R.id.card_scroll})
+    void onCardClicked(View view) {
+        switch (view.getId()) {
+            case R.id.card_list:
+                startActivity(new Intent(this, ListSampleActivity.class));
+                break;
+            case R.id.card_recycler:
+                startActivity(new Intent(this, RecyclerActivity.class));
+                break;
+            case R.id.card_scroll:
+                startActivity(new Intent(this, ScrollSampleActivity.class));
+                break;
+            default:
+                break;
         }
     }
 }

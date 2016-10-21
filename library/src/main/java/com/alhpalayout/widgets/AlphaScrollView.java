@@ -32,11 +32,10 @@ public class AlphaScrollView extends ScrollView {
     }
 
     @Override
-    public void computeScroll() {
-        super.computeScroll();
-        if (null != alphaScrollListener) {
-            alphaScrollListener.onScroll(this.getScrollY());
-        }
+    protected void onScrollChanged(int l, int t, int oldl, int oldt) {
+        super.onScrollChanged(l, t, oldl, oldt);
+        if (null != alphaScrollListener)
+            alphaScrollListener.onScroll(getScrollY());
     }
 
     public void setAlphaScrollListener(ScrollListenerCompat.AlphaScrollListener alphaScrollListener) {

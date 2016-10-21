@@ -1,3 +1,114 @@
 <resources>
-    <string name="app_name">AlphaLayout</string>
+    <string name="app_name">AlphaLayout (release)</string>
+    <string name="app_name_debug" translatable="false">AlphaLayout (debug)</string>
+
+    <string name="about">About</string>
+    <string name="version" formatted="false">Version %1$s (%2$s)</string>
+    <string name="author">lu.meng</string>
+
+    <!--about-->
+    <string name="start_me_on_github">Star me on GitHub</string>
+    <string name="contact_me">Contact me</string>
+    <string name="contact_me_text"><![CDATA[
+        <p>Keep in touch with me by sending e-mail to &quot;<a href="mailto:jiahehz@gmail.com">lu.meng</a>&quot; </p>
+    ]]></string>
+    <string name="dependence">Dependence</string>
+    <string name="me">Me</string>
+    <string name="me_text">Android Developer</string>
+    <string name="twitter">Twitter</string>
+    <string name="thanks">Thanks To</string>
+    <string name="thanks_text"><![CDATA[
+    <p>Thanks <a href="https://github.com/Yalantis>Yalantis</a> for providing such a good logic for <a href="https://github.com/lubeast/PullToRefresh">PullToRefresh</a>(My another project)
+    ]]></string>
+    <string name="license">License</string>
+    <string name="license_text">Apache-2.0</string>
+    <string name="about_copied">\"%s\" is copied to your clipboard</string>
+
+    <string name="about_page" translatable="false"><![CDATA[
+    <!DOCTYPE html>
+    <html>
+        <head>
+            <meta charset="utf-8">
+            <style>
+            html {
+                background: #F4F4F4;
+                height: 100%;
+            }
+
+            body {
+                padding: 16px 0;
+            }
+
+            * {
+                margin: 0;
+                padding: 0;
+            }
+
+            h2 {
+                font-size: 12px;
+                padding: 16px;
+                color: #999;
+            }
+
+            ul {
+                list-style: none;
+            }
+
+            li a,
+            li a:visited,
+            .card {
+                display: block;
+                background: #FFFFFF;
+                box-shadow: 0px 1px 1px rgba(0, 0, 0, 0.20);
+                padding: 16px;
+                color: #555;
+                font-size: 16px;
+                text-decoration: none;
+            }
+
+            li a:hover,
+            li a:active {
+                text-decoration: none;
+                background: #FEFEFE;
+            }
+
+            .card {
+                font-size: 14px;
+                line-height: 1.5;
+            }
+
+            .card p:not(:last-child) {
+                margin-bottom: 16px;
+            }
+
+            .card a {
+                color: #FF5252;
+            }
+            </style>
+        </head>
+        <body>
+            <h2>{{star_me_on_github}}</h2>
+            <ul>
+                <li><a href="https://github.com/lubeast/AlphaLayout">lu.meng / AlphaLayout</a></li>
+            </ul>
+
+            <h2>{{contact_me}}</h2>
+            <div class="card">{{contact_me_text}}</div>
+
+            <h2>{{dependence}}</h2>
+            <ul>
+                <li><a href="https://github.com/lubeast/PullToRefresh">lu.meng / PullToRefresh</a></li>
+            </ul>
+
+            <h2>{{me}}</h2>
+            <div class="card">{{me_text}}</div>
+
+            <h2>{{thanks}}</h2>
+            <div class="card">{{thanks_text}}</div>
+
+            <h2>{{license}}</h2>
+            <div class="card">{{license_text}}</div>
+        </body>
+    </html>
+    ]]></string>
 </resources>

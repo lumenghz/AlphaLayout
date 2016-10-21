@@ -43,3 +43,6 @@ captures/
 
 # Mac os
 .DS_Store
+
+# Personal
+app/config.properties

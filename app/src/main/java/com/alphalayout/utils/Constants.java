@@ -1,7 +1,10 @@
 package com.alphalayout.utils;
 
 /**
- * @author glority - lu.meng
+ * @author lu.meng
  */
-public class Constants {
+public interface Constants {
+    public static final String ICON = "icon";
+    public static final String COLOR = "color";
+    public static final String TITLE = "title";
 }

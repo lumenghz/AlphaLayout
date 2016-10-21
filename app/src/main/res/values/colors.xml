@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <color name="colorPrimary">#2B2E4A</color>
-    <color name="colorPrimaryDark">#2B2E4A</color>
-    <color name="colorAccent">#e1e0e0</color>
+    <color name="colorAccent">#e1e1e1</color>
+    <color name="colorPrimary">#295E62</color>
+    <color name="colorPrimaryDark">#1C4648</color>
 
     <color name="analytics">#e26a6a</color>
     <color name="clock">#1f7327</color>
@@ -14,4 +14,6 @@
 
     <color name="from">#192f58</color>
     <color name="to">#00ffffff</color>
+
+    <color name="cardBackground">#517b5a</color>
 </resources>

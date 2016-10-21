@@ -2,7 +2,6 @@
 <resources>
     <declare-styleable name="AlphaLayout">
         <attr name="headerLayout" format="reference" />
-        <attr name="headerTransparent" format="boolean" />
         <attr name="transparent_distance" format="dimension|reference" />
     </declare-styleable>
 

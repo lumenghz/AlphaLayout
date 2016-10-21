@@ -220,9 +220,8 @@ public class AlphaLayout extends ViewGroup implements ScrollListenerCompat.Alpha
         else
             percent = (float) Math.abs(boundedDistance) / (float) mTransparentDistance;
 
-        if (null != onRefreshListener) {
+        if (null != onRefreshListener)
             onRefreshListener.onScroll(DIRECTION_UP, percent);
-        }
     }
 
     private float getMotionEventY(MotionEvent ev, int activePointerId) {
