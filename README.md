@@ -6,7 +6,7 @@
 
 ### Preview
 
-#### 1. sample_ListView
+#### 1. sample_ListView (with viewpager)
 <img src=./art/sample_list.gif width=300/>
 
 #### 2. sample_RecyclerView
@@ -16,6 +16,25 @@
 <img src=./art/sample_scroll.gif width=300/>
 
 ### Usage
+- Add jitpack repository to your root build file
+
+```groovy
+allprojects {
+    repositories {
+        ...
+        maven { url "https://jitpack.io" }
+    }
+}
+```
+
+- Add the dependency
+
+```groovy
+dependencies {
+    compile 'com.github.lubeast:AlphaLayout:1.0.0'
+}
+```
+
 - Add `AlphaLayout` widget in your layout
 
 ```xml
@@ -73,4 +92,4 @@
 #### 1. Fir.im
 <img src=./art/fir_1.0.0_release.jpeg width=300 />
 #### 2.download apk directly
-[release_1.0.0_github.apk](./art/alpha_release-1/0/0-github.apk)
+[release_1.0.0_github.apk](https://raw.githubusercontent.com/lubeast/alphalayout/master/art/alpha-release-1.0.0-github.apk)
