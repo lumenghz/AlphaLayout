@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+<html lang="en-us">
+  <head>
+    <meta charset="UTF-8">
+    <title>Alphalayout by lubeast</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" type="text/css" href="stylesheets/normalize.css" media="screen">
+    <link href='https://fonts.googleapis.com/css?family=Open+Sans:400,700' rel='stylesheet' type='text/css'>
+    <link rel="stylesheet" type="text/css" href="stylesheets/stylesheet.css" media="screen">
+    <link rel="stylesheet" type="text/css" href="stylesheets/github-light.css" media="screen">
+  </head>
+  <body>
+    <section class="page-header">
+      <h1 class="project-name">Alphalayout</h1>
+      <h2 class="project-tagline"></h2>
+      <a href="https://github.com/lubeast/AlphaLayout" class="btn">View on GitHub</a>
+      <a href="https://github.com/lubeast/AlphaLayout/zipball/master" class="btn">Download .zip</a>
+      <a href="https://github.com/lubeast/AlphaLayout/tarball/master" class="btn">Download .tar.gz</a>
+    </section>
+
+    <section class="main-content">
+      <h1>
+<a id="alphalayout" class="anchor" href="#alphalayout" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>AlphaLayout</h1>
+
+<blockquote>
+<p>This project depends on another project called <code>PullToRefresh</code> written by me.</p>
+</blockquote>
+
+<p><a href="https://twitter.com/LuMengHZ"><img src="https://img.shields.io/badge/Twitter-@LuMengHZ-blue.svg?style=flat-square" alt="Twitter"></a>
+<a href="https://jitpack.io/#lubeast/AlphaLayout"><img src="https://jitpack.io/v/lubeast/AlphaLayout.svg?style=flat-square" alt=""></a></p>
+
+<h3>
+<a id="preview" class="anchor" href="#preview" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Preview</h3>
+
+<h4>
+<a id="1-sample_listview-with-viewpager" class="anchor" href="#1-sample_listview-with-viewpager" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>1. sample_ListView (with viewpager)</h4>
+
+<p><img src="https://raw.githubusercontent.com/lubeast/alphalayout/master/art/sample_list.gif" width="300"></p>
+
+<h4>
+<a id="2-sample_recyclerview" class="anchor" href="#2-sample_recyclerview" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>2. sample_RecyclerView</h4>
+
+<p><img src="https://raw.githubusercontent.com/lubeast/alphalayout/master/art/sample_recycler.gif" width="300"></p>
+
+<h4>
+<a id="3-sample_scrollview" class="anchor" href="#3-sample_scrollview" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>3. sample_ScrollView</h4>
+
+<p><img src="https://raw.githubusercontent.com/lubeast/alphalayout/master/art/sample_scroll.gif" width="300"></p>
+
+<h3>
+<a id="usage" class="anchor" href="#usage" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Usage</h3>
+
+<ul>
+<li>Add jitpack repository to your root build file</li>
+</ul>
+
+<div class="highlight highlight-source-groovy"><pre>allprojects {
+    repositories {
+        <span class="pl-k">..</span>.
+        maven { url <span class="pl-s"><span class="pl-pds">"</span>https://jitpack.io<span class="pl-pds">"</span></span> }
+    }
+}</pre></div>
+
+<ul>
+<li>Add the dependency</li>
+</ul>
+
+<div class="highlight highlight-source-groovy"><pre>dependencies {
+    compile <span class="pl-s"><span class="pl-pds">'</span>com.github.lubeast:AlphaLayout:1.0.0<span class="pl-pds">'</span></span>
+}</pre></div>
+
+<ul>
+<li>Add <code>AlphaLayout</code> widget in your layout</li>
+</ul>
+
+<div class="highlight highlight-text-xml"><pre>&lt;<span class="pl-ent">com</span>.alhpalayout.AlphaLayout <span class="pl-e">xmlns</span><span class="pl-e">:</span><span class="pl-e">android</span>=<span class="pl-s"><span class="pl-pds">"</span>http://schemas.android.com/apk/res/android<span class="pl-pds">"</span></span>
+    <span class="pl-e">xmlns</span><span class="pl-e">:</span><span class="pl-e">app</span>=<span class="pl-s"><span class="pl-pds">"</span>http://schemas.android.com/apk/res-auto<span class="pl-pds">"</span></span>
+    <span class="pl-e">xmlns</span><span class="pl-e">:</span><span class="pl-e">tools</span>=<span class="pl-s"><span class="pl-pds">"</span>http://schemas.android.com/tools<span class="pl-pds">"</span></span>
+    <span class="pl-e">android</span><span class="pl-e">:</span><span class="pl-e">id</span>=<span class="pl-s"><span class="pl-pds">"</span>@+id/alpha_layout<span class="pl-pds">"</span></span>
+    <span class="pl-e">android</span><span class="pl-e">:</span><span class="pl-e">layout_width</span>=<span class="pl-s"><span class="pl-pds">"</span>match_parent<span class="pl-pds">"</span></span>
+    <span class="pl-e">android</span><span class="pl-e">:</span><span class="pl-e">layout_height</span>=<span class="pl-s"><span class="pl-pds">"</span>match_parent<span class="pl-pds">"</span></span>
+    <span class="pl-e">app</span><span class="pl-e">:</span><span class="pl-e">headerLayout</span>=<span class="pl-s"><span class="pl-pds">"</span>@layout/layout_header<span class="pl-pds">"</span></span>
+    <span class="pl-e">app</span><span class="pl-e">:</span><span class="pl-e">transparent_distance</span>=<span class="pl-s"><span class="pl-pds">"</span>150dp<span class="pl-pds">"</span></span>
+    <span class="pl-e">tools</span><span class="pl-e">:</span><span class="pl-e">context</span>=<span class="pl-s"><span class="pl-pds">"</span>com.alphalayout.activity.ListSampleActivity<span class="pl-pds">"</span></span>&gt;
+
+    &lt;<span class="pl-ent">ListView</span>
+        <span class="pl-e">android</span><span class="pl-e">:</span><span class="pl-e">id</span>=<span class="pl-s"><span class="pl-pds">"</span>@+id/list_view<span class="pl-pds">"</span></span>
+        <span class="pl-e">android</span><span class="pl-e">:</span><span class="pl-e">layout_width</span>=<span class="pl-s"><span class="pl-pds">"</span>match_parent<span class="pl-pds">"</span></span>
+        <span class="pl-e">android</span><span class="pl-e">:</span><span class="pl-e">layout_height</span>=<span class="pl-s"><span class="pl-pds">"</span>match_parent<span class="pl-pds">"</span></span>
+        <span class="pl-e">android</span><span class="pl-e">:</span><span class="pl-e">divider</span>=<span class="pl-s"><span class="pl-pds">"</span>@null<span class="pl-pds">"</span></span>
+        <span class="pl-e">android</span><span class="pl-e">:</span><span class="pl-e">dividerHeight</span>=<span class="pl-s"><span class="pl-pds">"</span>0dp<span class="pl-pds">"</span></span> /&gt;
+
+&lt;/<span class="pl-ent">com</span>.alhpalayout.AlphaLayout&gt;</pre></div>
+
+<ul>
+<li>implements AlphaLayout.OnRefreshListener in your <code>Activity</code>
+</li>
+</ul>
+
+<div class="highlight highlight-source-java"><pre>    <span class="pl-k">@Override</span>
+    <span class="pl-k">public</span> <span class="pl-k">void</span> onRefresh() {
+        alphaLayout<span class="pl-k">.</span>postDelayed(<span class="pl-k">new</span> <span class="pl-smi">Runnable</span>() {
+            <span class="pl-k">@Override</span>
+            <span class="pl-k">public</span> <span class="pl-k">void</span> <span class="pl-en">run</span>() {
+                alphaLayout<span class="pl-k">.</span>setRefreshing(<span class="pl-c1">false</span>);
+            }
+        }, <span class="pl-c1">REFRESH_DELAY</span>);
+    }
+
+    <span class="pl-k">@Override</span>
+    <span class="pl-k">public</span> <span class="pl-k">void</span> onScroll(<span class="pl-k">int</span> direction, <span class="pl-k">float</span> percent) {
+        <span class="pl-k">if</span> (direction <span class="pl-k">==</span> <span class="pl-smi">AlphaLayout</span><span class="pl-c1"><span class="pl-k">.</span>DIRECTION_DOWN</span>) {
+            <span class="pl-smi">ViewCompat</span><span class="pl-k">.</span>setAlpha(alphaLayout<span class="pl-k">.</span>getHeaderLayout(), <span class="pl-c1">1.0f</span> <span class="pl-k">-</span> percent);
+        } <span class="pl-k">else</span> {
+            alphaLayout<span class="pl-k">.</span>getHeaderLayout()<span class="pl-k">.</span>getBackground()<span class="pl-k">.</span>setAlpha((<span class="pl-k">int</span>) (<span class="pl-c1">255</span> <span class="pl-k">*</span> percent));
+            mTitleView<span class="pl-k">.</span>getBackground()<span class="pl-k">.</span>mutate()<span class="pl-k">.</span>setAlpha((<span class="pl-k">int</span>) (<span class="pl-c1">255</span> <span class="pl-k">*</span> (<span class="pl-c1">1</span> <span class="pl-k">-</span> percent)));
+        }
+    }</pre></div>
+
+<h3>
+<a id="attention" class="anchor" href="#attention" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Attention</h3>
+
+<ul>
+<li>You should use <code>AlphaScrollView</code> which been provided instead of <code>ScrollView</code>.</li>
+<li>I also provided <code>AlphaHeaderLayout</code> which can make good performance easily.</li>
+</ul>
+
+<p><strong>See sample project for detail</strong></p>
+
+<h3>
+<a id="download-sample-apk" class="anchor" href="#download-sample-apk" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Download Sample apk</h3>
+
+<h4>
+<a id="1-firim" class="anchor" href="#1-firim" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>1. Fir.im</h4>
+
+<p><img src="./art/fir_1.0.0_release.jpeg" width="300"></p>
+
+<h4>
+<a id="2download-apk-directly" class="anchor" href="#2download-apk-directly" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>2.download apk directly</h4>
+
+<p><a href="https://raw.githubusercontent.com/lubeast/alphalayout/master/art/alpha-release-1.0.0-github.apk">release_1.0.0_github.apk</a></p>
+
+      <footer class="site-footer">
+        <span class="site-footer-owner"><a href="https://github.com/lubeast/AlphaLayout">Alphalayout</a> is maintained by <a href="https://github.com/lubeast">lubeast</a>.</span>
+
+        <span class="site-footer-credits">This page was generated by <a href="https://pages.github.com">GitHub Pages</a> using the <a href="https://github.com/jasonlong/cayman-theme">Cayman theme</a> by <a href="https://twitter.com/jasonlong">Jason Long</a>.</span>
+      </footer>
+
+    </section>
+
+  
+  </body>
+</html>
