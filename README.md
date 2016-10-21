@@ -3,6 +3,7 @@
 > This project depends on another project called `PullToRefresh` written by me.
 
 [![Twitter](https://img.shields.io/badge/Twitter-@LuMengHZ-blue.svg?style=flat-square)](https://twitter.com/LuMengHZ)
+[![](https://jitpack.io/v/lubeast/AlphaLayout.svg?style=flat-square)](https://jitpack.io/#lubeast/AlphaLayout)
 
 ### Preview
 
