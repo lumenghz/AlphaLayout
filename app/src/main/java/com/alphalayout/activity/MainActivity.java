@@ -1,4 +1,4 @@
-package com.alphalayout;
+package com.alphalayout.activity;
 
 import android.content.Context;
 import android.os.Bundle;
@@ -13,6 +13,7 @@ import android.widget.ListView;
 import android.widget.TextView;
 
 import com.alhpalayout.AlphaLayout;
+import com.alphalayout.R;
 
 import java.util.List;
 import java.util.Map;
@@ -70,14 +71,12 @@ public class MainActivity extends BaseActivity implements AlphaLayout.OnRefreshL
         }
     }
 
-    class SimpleAdapter extends ArrayAdapter<Map<String, Integer>> {
-        public static final String KEY_ICON = "icon";
-        public static final String KEY_COLOR = "color";
+    class SimpleAdapter extends ArrayAdapter<Map<String, Object>> {
 
         private final LayoutInflater mInflater;
-        private final List<Map<String, Integer>> mDatas;
+        private final List<Map<String, Object>> mDatas;
 
-        public SimpleAdapter(Context context, int resource, List<Map<String, Integer>> mDatas) {
+        public SimpleAdapter(Context context, int resource, List<Map<String, Object>> mDatas) {
             super(context, resource, mDatas);
             this.mDatas = mDatas;
             mInflater = LayoutInflater.from(context);
@@ -90,19 +89,22 @@ public class MainActivity extends BaseActivity implements AlphaLayout.OnRefreshL
                 viewHolder = new ViewHolder();
                 convertView = mInflater.inflate(R.layout.list_item, parent, false);
                 viewHolder.icon = (ImageView) convertView.findViewById(R.id.image_view_icon);
+                viewHolder.title = (TextView) convertView.findViewById(R.id.title_item);
                 convertView.setTag(viewHolder);
             } else {
                 viewHolder = (ViewHolder) convertView.getTag();
             }
 
-            viewHolder.icon.setImageResource(mDatas.get(position).get(KEY_ICON));
-            convertView.setBackgroundResource(mDatas.get(position).get(KEY_COLOR));
+            viewHolder.icon.setImageResource((int) mDatas.get(position).get(ICON));
+            convertView.setBackgroundResource((int) mDatas.get(position).get(COLOR));
+            viewHolder.title.setText((String) mDatas.get(position).get(TITLE));
 
             return convertView;
         }
 
         class ViewHolder {
             ImageView icon;
+            TextView title;
         }
     }
 }

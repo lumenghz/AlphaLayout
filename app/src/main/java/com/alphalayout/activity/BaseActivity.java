@@ -1,4 +1,4 @@
-package com.alphalayout;
+package com.alphalayout.activity;
 
 import android.graphics.Color;
 import android.os.Build;
@@ -9,6 +9,8 @@ import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 import android.view.Window;
 import android.view.WindowManager;
+
+import com.alphalayout.R;
 
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -28,8 +30,9 @@ abstract class BaseActivity extends AppCompatActivity {
 
     protected static final String ICON = "icon";
     protected static final String COLOR = "color";
+    protected static final String TITLE = "title";
 
-    protected List<Map<String, Integer>> mSampleDatas;
+    protected List<Map<String, Object>> mSampleDatas;
 
     protected Unbinder mUnbinder;
 
@@ -52,7 +55,7 @@ abstract class BaseActivity extends AppCompatActivity {
     }
 
     private void initDataSet() {
-        Map<String, Integer> mMap;
+        Map<String, Object> mMap;
         mSampleDatas = new ArrayList<>();
 
         int[] icons = {
@@ -75,10 +78,15 @@ abstract class BaseActivity extends AppCompatActivity {
                 R.color.usb
         };
 
+        String[] titles = new String[] {
+                "Analytics", "Clock", "Coding", "DeskLamp", "Marker", "Projector", "USB"
+        };
+
         for (int i = 0; i < icons.length; i++) {
             mMap = new HashMap<>();
             mMap.put(ICON, icons[i]);
             mMap.put(COLOR, colors[i]);
+            mMap.put(TITLE, titles[i]);
             mSampleDatas.add(mMap);
         }
     }
